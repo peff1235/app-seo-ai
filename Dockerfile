@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3000
 
 # Command to run the application in MCP mode
-CMD ["node", "src/mcp.js", "--mcp"]
+CMD ["node", "src/mcp_fixed.js", "--mcp"]
