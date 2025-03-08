@@ -11,6 +11,7 @@ dotenv.config();
 // Initialize express app
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0'; // Listen on all network interfaces
 
 // Middleware
 app.use(cors());
@@ -28,9 +29,9 @@ app.get('/health', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`MCP Server running on port ${PORT}`);
-  console.log(`Health check available at http://localhost:${PORT}/health`);
+app.listen(PORT, HOST, () => {
+  console.log(`MCP Server running on ${HOST}:${PORT}`);
+  console.log(`Health check available at http://${HOST}:${PORT}/health`);
 });
 
 export default app;
