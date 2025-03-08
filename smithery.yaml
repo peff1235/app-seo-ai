@@ -1,0 +1,38 @@
+name: app-seo-ai
+description: SEO automation and AI-powered optimization with Google Ads Keyword Planner integration
+version: 1.0.0
+
+# Build configuration
+build:
+  dockerfile: Dockerfile
+  context: .
+  args: {}
+
+# Runtime configuration
+runtime:
+  port: 3000
+  health_check:
+    path: /health
+    initial_delay_seconds: 10
+    period_seconds: 30
+    timeout_seconds: 5
+    success_threshold: 1
+    failure_threshold: 3
+
+# Environment variables
+env:
+  - name: PORT
+    value: "3000"
+  - name: NODE_ENV
+    value: "production"
+  - name: GOOGLE_ADS_DEVELOPER_TOKEN
+    value: "6mEoXl5C5vR0oxlHDhUFQQ"
+
+# Resource limits
+resources:
+  cpu: "1"
+  memory: "512Mi"
+
+# MCP configuration
+mcp:
+  file: mcp.json
