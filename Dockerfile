@@ -16,4 +16,4 @@ EXPOSE 3000
 
 # The command will be provided by smithery.yaml
 # This is just a default command for local testing
-CMD ["node", "src/mcp_fixed.js", "--mcp"]
+CMD ["node", "src/mcp.js", "--mcp"]
