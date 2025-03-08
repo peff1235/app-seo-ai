@@ -1,0 +1,166 @@
+{
+  "name": "SEO AI Tools",
+  "description": "SEO automation and AI-powered optimization with Google Ads Keyword Planner integration",
+  "version": "1.0.0",
+  "tools": [
+    {
+      "name": "research_keywords",
+      "description": "Research keywords related to a given topic or seed keyword",
+      "parameters": {
+        "type": "object",
+        "required": ["keyword"],
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "Seed keyword to generate ideas from"
+          },
+          "language": {
+            "type": "string",
+            "description": "Language code (e.g., 'en', 'fr', 'es')"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Array of location IDs (e.g., [2250] for US)"
+          },
+          "include_questions": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to include question-based keywords"
+          },
+          "include_related": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to include related keywords"
+          },
+          "include_suggestions": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to include Google's keyword suggestions"
+          }
+        }
+      },
+      "handler": {
+        "type": "http",
+        "method": "GET",
+        "url": "/api/keywords/ideas",
+        "query": {
+          "keyword": "{keyword}",
+          "language": "{language}",
+          "locations": "{locations}",
+          "include_questions": "{include_questions}",
+          "include_related": "{include_related}",
+          "include_suggestions": "{include_suggestions}"
+        }
+      }
+    },
+    {
+      "name": "analyze_serp",
+      "description": "Analyze a SERP (Search Engine Results Page) for a given query",
+      "parameters": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query to analyze"
+          },
+          "location": {
+            "type": "string",
+            "description": "Location for the search (e.g., 'United States')"
+          },
+          "language": {
+            "type": "string",
+            "description": "Language code (e.g., 'en')"
+          },
+          "device": {
+            "type": "string",
+            "enum": ["desktop", "mobile"],
+            "default": "desktop",
+            "description": "Device type for the search"
+          },
+          "num": {
+            "type": "number",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 100,
+            "description": "Number of results to return"
+          }
+        }
+      },
+      "handler": {
+        "type": "http",
+        "method": "GET",
+        "url": "/api/serp/analyze",
+        "query": {
+          "query": "{query}",
+          "location": "{location}",
+          "language": "{language}",
+          "device": "{device}",
+          "num": "{num}"
+        }
+      }
+    },
+    {
+      "name": "analyze_competitors",
+      "description": "Analyze competitors for a given keyword or domain",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "Keyword to analyze competitors for"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Domain to analyze competitors for"
+          },
+          "include_features": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to include detailed features in the analysis"
+          },
+          "num_results": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 10,
+            "description": "Number of competitor results to return"
+          }
+        }
+      },
+      "handler": {
+        "type": "http",
+        "method": "GET",
+        "url": "/api/competitors/analyze",
+        "query": {
+          "keyword": "{keyword}",
+          "domain": "{domain}",
+          "include_features": "{include_features}",
+          "limit": "{num_results}"
+        }
+      }
+    },
+    {
+      "name": "_health",
+      "description": "Health check endpoint",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "random_string": {
+            "type": "string",
+            "description": "Dummy parameter for no-parameter tools"
+          }
+        },
+        "required": ["random_string"]
+      },
+      "handler": {
+        "type": "http",
+        "method": "GET",
+        "url": "/health"
+      }
+    }
+  ]
+}
