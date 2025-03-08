@@ -1,0 +1,23 @@
+{
+  "name": "SEO AI Tools",
+  "description": "SEO automation and AI-powered optimization with Google Ads Keyword Planner integration",
+  "version": "1.0.0",
+  "repository": "https://github.com/ccnn2509/app-seo-ai",
+  "main": "mcp.json",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "env": {
+    "PORT": "3000",
+    "NODE_ENV": "production",
+    "GOOGLE_ADS_DEVELOPER_TOKEN": "6mEoXl5C5vR0oxlHDhUFQQ"
+  },
+  "buildCommand": "npm install",
+  "startCommand": "npm start",
+  "healthCheckPath": "/health",
+  "resources": {
+    "cpu": 1,
+    "memory": "512Mi"
+  }
+}
