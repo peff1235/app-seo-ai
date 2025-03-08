@@ -11,7 +11,7 @@ build:
 # Runtime configuration
 runtime:
   port: 3000
-  command: ["node", "src/mcp.js", "--mcp"]
+  command: ["node", "src/mcp_fixed.js", "--mcp"]
   health_check:
     path: /health
     initial_delay_seconds: 10
