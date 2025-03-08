@@ -14,5 +14,6 @@ COPY . .
 # Expose the port the app runs on
 EXPOSE 3000
 
-# Command to run the application in MCP mode
+# The command will be provided by smithery.yaml
+# This is just a default command for local testing
 CMD ["node", "src/mcp_fixed.js", "--mcp"]
