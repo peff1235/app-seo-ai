@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - GOOGLE_ADS_DEVELOPER_TOKEN=${GOOGLE_ADS_DEVELOPER_TOKEN}
+      - GOOGLE_ADS_CLIENT_ID=${GOOGLE_ADS_CLIENT_ID}
+      - GOOGLE_ADS_CLIENT_SECRET=${GOOGLE_ADS_CLIENT_SECRET}
+      - GOOGLE_ADS_REFRESH_TOKEN=${GOOGLE_ADS_REFRESH_TOKEN}
+      - GOOGLE_ADS_LOGIN_CUSTOMER_ID=${GOOGLE_ADS_LOGIN_CUSTOMER_ID}
+      - SERP_API_KEY=${SERP_API_KEY}
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
