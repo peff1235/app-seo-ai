@@ -16,4 +16,6 @@ EXPOSE 3000
 
 # The command will be provided by smithery.yaml
 # This is just a default command for local testing
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
 CMD ["node", "src/mcp.js", "--mcp"]
