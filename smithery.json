@@ -2,7 +2,7 @@
   "name": "SEO AI Tools",
   "description": "SEO automation and AI-powered optimization with Google Ads Keyword Planner integration",
   "version": "1.0.0",
-  "repository": "https://github.com/ccnn2509/app-seo-ai",
+  "repository": "https://github.com/peff1235/app-seo-ai",
   "main": "mcp.json",
   "scripts": {
     "start": "node src/index.js",
