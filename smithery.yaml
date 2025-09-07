@@ -1,42 +1,23 @@
 # Smithery.ai configuration
 startCommand:
-  type: http
-  port: 3000
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    {}
   commandFunction: |-
     (config) => ({
       "command": "node",
       "args": [
-        "src/index.js"
+        "src/mcp.js",
+        "--mcp"
       ],
       "env": {
         "PORT": "3000",
         "HOST": "0.0.0.0",
         "NODE_ENV": "production",
-        "GOOGLE_ADS_DEVELOPER_TOKEN": "${{ secrets.GOOGLE_ADS_DEVELOPER_TOKEN }}",
-        "GOOGLE_ADS_CLIENT_ID": "${{ secrets.GOOGLE_ADS_CLIENT_ID }}",
-        "GOOGLE_ADS_CLIENT_SECRET": "${{ secrets.GOOGLE_ADS_CLIENT_SECRET }}",
-        "GOOGLE_ADS_REFRESH_TOKEN": "${{ secrets.GOOGLE_ADS_REFRESH_TOKEN }}",
-        "GOOGLE_ADS_LOGIN_CUSTOMER_ID": "${{ secrets.GOOGLE_ADS_LOGIN_CUSTOMER_ID }}",
-        "SERP_API_KEY": "${{ secrets.SERP_API_KEY }}"
+        "GOOGLE_ADS_DEVELOPER_TOKEN": "6mEoXl5C5vR0oxlHDhUFQQ"
       }
     })
-  http:
-    health:
-      path: /health
-      expectStatus: 200
-  tests:
-    - name: health
-      request:
-        method: GET
-        path: /health
-      expect:
-        status: 200
-    - name: manifest
-      request:
-        method: GET
-        path: /mcp.json
-      expect:
-        status: 200
 
 # Build configuration
 build:
