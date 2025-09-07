@@ -20,26 +20,23 @@ startCommand:
         "SERP_API_KEY": "${{ secrets.SERP_API_KEY }}"
       }
     })
-
-http:
-  port: 3000
-  health:
-    path: /health
-    expectStatus: 200
-
-tests:
-  - name: health
-    request:
-      method: GET
+  http:
+    health:
       path: /health
-    expect:
-      status: 200
-  - name: manifest
-    request:
-      method: GET
-      path: /mcp.json
-    expect:
-      status: 200
+      expectStatus: 200
+  tests:
+    - name: health
+      request:
+        method: GET
+        path: /health
+      expect:
+        status: 200
+    - name: manifest
+      request:
+        method: GET
+        path: /mcp.json
+      expect:
+        status: 200
 
 # Build configuration
 build:
