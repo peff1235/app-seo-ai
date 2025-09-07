@@ -15,7 +15,7 @@ startCommand:
         "PORT": "3000",
         "HOST": "0.0.0.0",
         "NODE_ENV": "production",
-        "GOOGLE_ADS_DEVELOPER_TOKEN": "6mEoXl5C5vR0oxlHDhUFQQ"
+        "GOOGLE_ADS_DEVELOPER_TOKEN": "ayBAyx_xih9CxVtQpFNEdA"
       }
     })
 
